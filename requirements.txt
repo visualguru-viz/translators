@@ -1,0 +1,8 @@
+torch
+transformers
+sentencepiece
+tf-keras
+streamlit
+sacremoses
+pandas
+sacremoses
