@@ -1,9 +1,10 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import streamlit as st
+import pickle
 
 
-model_en_fr = torch.load('model_en_fr.pkl')
+model_en_fr = pickle.load('model_en_fr.pkl')
 tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-fr")
 
 st.title("Translator: English - French")
@@ -17,7 +18,7 @@ fr_translated = translated_txt[0]
 fr_translated = fr_translated.replace("<pad>", "").replace("</s>", "")
 st.write(fr_translated)
 
-model_en_de = torch.load('model_en_de.pkl')
+model_en_de = pickle.load('model_en_de.pkl')
 de_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-de")
 
 
@@ -30,7 +31,7 @@ de_translated = de_translated.replace("<pad>", "").replace("</s>", "")
 st.write(de_translated)
 
 
-model_en_es = torch.load('model_en_es.pkl')
+model_en_es = pickle.load('model_en_es.pkl')
 es_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-es")
 
 
