@@ -5,7 +5,6 @@ import pickle
 
 with open('model_en_fr.pkl', 'rb') as file:
     model_en_fr = pickle.load(file)
-# model_en_fr = pickle.load('model_en_fr.pkl')
 tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-fr")
 
 st.title("Translator: English - French")
@@ -21,7 +20,6 @@ st.write(fr_translated)
 
 with open('model_en_de.pkl', 'rb') as file:
     model_en_de = pickle.load(file)
-# model_en_de = pickle.load('model_en_de.pkl')
 de_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-de")
 
 
@@ -36,7 +34,6 @@ st.write(de_translated)
 
 with open('model_en_es.pkl', 'rb') as file:
     model_en_es = pickle.load(file)
-# model_en_es = pickle.load('model_en_es.pkl')
 es_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-es")
 
 
