@@ -5,4 +5,4 @@ tf-keras
 streamlit
 sacremoses
 pandas
-pickle
+scikit-learn
