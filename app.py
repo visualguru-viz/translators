@@ -3,8 +3,9 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import streamlit as st
 import pickle
 
-with open('model_en_fr.pkl', 'rb') as file:
-    model_en_fr = pickle.load(file)
+
+
+model_en_fr = pickle.load(open('model_en_fr.pkl','rb'))
 tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-fr")
 
 st.title("Translator: English - French")
