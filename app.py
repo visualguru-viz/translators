@@ -3,24 +3,23 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import streamlit as st
 import pickle
 
+model_en_fr = torch.load('model_en_fr.pkl')
+tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-fr")
+
+st.title("Translator: English - French")
+text_to_translate = st.text_input("English")
+
+trans_text_encode = model_en_fr.generate(**tokenizer.prepare_seq2seq_batch([text_to_translate],return_tensors='pt'))
+translated_txt = tokenizer.batch_decode(trans_text_encode)
+
+st.subheader("French:")
+fr_translated = translated_txt[0]
+fr_translated = fr_translated.replace("<pad>", "").replace("</s>", "")
+st.write(fr_translated)
 
 
-# model_en_fr = pickle.load(open('model_en_fr.pkl','rb'))
-# tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-fr")
 
-# st.title("Translator: English - French")
-# text_to_translate = st.text_input("English")
-
-# trans_text_encode = model_en_fr.generate(**tokenizer.prepare_seq2seq_batch([text_to_translate],return_tensors='pt'))
-# translated_txt = tokenizer.batch_decode(trans_text_encode)
-
-# st.subheader("French:")
-# fr_translated = translated_txt[0]
-# fr_translated = fr_translated.replace("<pad>", "").replace("</s>", "")
-# st.write(fr_translated)
-
-with open('model_en_de.pkl', 'rb') as file:
-    model_en_de = pickle.load(file)
+model_en_de = torch.load('model_en_de.pkl')
 de_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-de")
 
 
@@ -33,8 +32,7 @@ de_translated = de_translated.replace("<pad>", "").replace("</s>", "")
 st.write(de_translated)
 
 
-with open('model_en_es.pkl', 'rb') as file:
-    model_en_es = pickle.load(file)
+model_en_es = torch.load('model_en_es.pkl')
 es_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-es")
 
 
